@@ -4,6 +4,8 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
 	const [listOfRestaurants, setListOfRestaurants] = useState([]);
+	const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+	const [searchtext, setSearchtext] = useState("");
 
 	useEffect(() => {
 		fetchResData();
@@ -16,6 +18,10 @@ const Body = () => {
 		const jsonData = await data.json();
 
 		setListOfRestaurants(
+			jsonData?.data?.cards.find((c) => c?.cardType === "seeAllRestaurants")
+				?.data?.data?.cards
+		);
+		setFilteredRestaurants(
 			jsonData?.data?.cards.find((c) => c?.cardType === "seeAllRestaurants")
 				?.data?.data?.cards
 		);
@@ -33,12 +39,30 @@ const Body = () => {
 	) : (
 		<div className="body">
 			<div className="filter">
+				<div className="search">
+					<input
+						type="text"
+						className="search-box"
+						onChange={(e) => setSearchtext(e.target.value)}
+						value={searchtext}
+					/>
+					<button
+						onClick={() => {
+							const filteredRestaurantsList = listOfRestaurants?.filter((r) =>
+								r.data.name.toLowerCase()?.includes(searchtext.toLowerCase())
+							);
+							setFilteredRestaurants(filteredRestaurantsList);
+						}}
+					>
+						Search
+					</button>
+				</div>
 				<button className="filter-btn" onClick={filterTopRatedRestaurants}>
 					Top Rated Restaurants
 				</button>
 			</div>
 			<div className="res-container">
-				{listOfRestaurants?.map((restaurant) => (
+				{filteredRestaurants?.map((restaurant) => (
 					<RestaurantCard key={restaurant.data.id} resData={restaurant} />
 				))}
 			</div>
