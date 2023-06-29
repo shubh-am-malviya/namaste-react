@@ -80,3 +80,8 @@ a:hover {
 .filter {
     display: flex;
 }
+
+.user-card {
+    padding: 10px;
+    border: solid black;
+}
