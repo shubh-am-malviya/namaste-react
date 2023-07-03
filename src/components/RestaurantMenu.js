@@ -2,23 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Shimmer from "./Shimmer";
-import { MENU_API } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-	const [restaurantInfo, setRestaurantInfo] = useState(null);
 	const { resId } = useParams();
 
-	useEffect(() => {
-		fetchMenu();
-	}, []);
-
-	const fetchMenu = async () => {
-		const data = await fetch(MENU_API + resId);
-		const jsonData = await data.json();
-
-		// console.log("RES_MENU", jsonData);
-		setRestaurantInfo(jsonData.data);
-	};
+	const restaurantInfo = useRestaurantMenu(resId);
 
 	if (restaurantInfo === null || restaurantInfo === undefined) {
 		return <Shimmer />;
