@@ -29,4 +29,18 @@ const RestaurantCard = (props) => {
 	);
 };
 
+// HOC
+export const withPromotedLabel = (RestaurantCard) => {
+	return (props) => {
+		return (
+			<div>
+				<label className="absolute mx-2 p-1 bg-slate-700 rounded-md text-white">
+					Promoted
+				</label>
+				<RestaurantCard {...props} />
+			</div>
+		);
+	};
+};
+
 export default RestaurantCard;
