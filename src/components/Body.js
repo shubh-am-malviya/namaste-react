@@ -28,12 +28,12 @@ const Body = () => {
 		const jsonData = await data.json();
 
 		setListOfRestaurants(
-			jsonData?.data?.cards.find((c) => c?.cardType === "seeAllRestaurants")
-				?.data?.data?.cards
+			jsonData?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+				?.restaurants
 		);
 		setFilteredRestaurants(
-			jsonData?.data?.cards.find((c) => c?.cardType === "seeAllRestaurants")
-				?.data?.data?.cards
+			jsonData?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+				?.restaurants
 		);
 	};
 
@@ -93,13 +93,13 @@ const Body = () => {
 			<div className="res-container flex flex-wrap">
 				{filteredRestaurants?.map((restaurant) => (
 					<Link
-						key={restaurant.data.id}
-						to={"/restaurants/" + restaurant.data.id}
+						key={restaurant?.info.id}
+						to={"/restaurants/" + restaurant?.info.id}
 					>
-						{restaurant.data.promoted ? (
-							<RestaurantCardPromoted resData={restaurant} />
+						{restaurant.info.promoted ? (
+							<RestaurantCardPromoted resData={restaurant?.info} />
 						) : (
-							<RestaurantCard resData={restaurant} />
+							<RestaurantCard resData={restaurant?.info} />
 						)}
 					</Link>
 				))}

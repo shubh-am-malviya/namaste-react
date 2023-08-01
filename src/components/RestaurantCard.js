@@ -11,7 +11,7 @@ const RestaurantCard = (props) => {
 		cuisines,
 		costForTwo,
 		deliveryTime,
-	} = resData?.data;
+	} = resData;
 
 	return (
 		<div className="m-4 p-2 w-56 bg-gray-100 rounded-lg shadow-md hover:scale-105 hover:duration-200">
@@ -23,8 +23,9 @@ const RestaurantCard = (props) => {
 			<h3 className="font-bold my-4 text-lg">{name}</h3>
 			<h3>{cuisines?.join(", ")}</h3>
 			<h4>{avgRating} stars</h4>
-			<h4>₹{costForTwo / 100} FOR TWO</h4>
-			<h4>{deliveryTime} minutes</h4>
+			{/* <h4>₹{costForTwo / 100} FOR TWO</h4> */}
+			<h4>{costForTwo}</h4>
+			{deliveryTime && <h4>{deliveryTime} minutes</h4>}
 		</div>
 	);
 };
