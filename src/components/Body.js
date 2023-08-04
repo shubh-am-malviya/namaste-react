@@ -15,7 +15,7 @@ const Body = () => {
 
 	const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
-	console.log("LIST OF RESTAURANTS", listOfRestaurants);
+	// console.log("LIST OF RESTAURANTS", listOfRestaurants);
 
 	useEffect(() => {
 		fetchResData();
@@ -28,12 +28,14 @@ const Body = () => {
 		const jsonData = await data.json();
 
 		setListOfRestaurants(
-			jsonData?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
-				?.restaurants
+			jsonData?.data?.cards.find(
+				(c) => c?.card?.card?.id === "top_brands_for_you"
+			)?.card?.card?.gridElements?.infoWithStyle?.restaurants
 		);
 		setFilteredRestaurants(
-			jsonData?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
-				?.restaurants
+			jsonData?.data?.cards.find(
+				(c) => c?.card?.card?.id === "top_brands_for_you"
+			)?.card?.card?.gridElements?.infoWithStyle?.restaurants
 		);
 	};
 
@@ -64,7 +66,7 @@ const Body = () => {
 						className="px-4 py-1 m-4 bg-green-300 rounded-lg"
 						onClick={() => {
 							const filteredRestaurantsList = listOfRestaurants?.filter((r) =>
-								r.data.name.toLowerCase()?.includes(searchtext.toLowerCase())
+								r.info.name.toLowerCase()?.includes(searchtext.toLowerCase())
 							);
 							setFilteredRestaurants(filteredRestaurantsList);
 						}}
