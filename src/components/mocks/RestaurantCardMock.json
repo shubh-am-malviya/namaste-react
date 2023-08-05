@@ -1,0 +1,73 @@
+{
+    "id": "640927",
+    "name": "Gagan Sweets",
+    "cloudinaryImageId": "yg7prev26oxdjzx2uly5",
+    "locality": "Eon IT park Road",
+    "areaName": "Kharadi",
+    "costForTwo": "₹300 for two",
+    "cuisines": [
+        "Sweets",
+        "Snacks",
+        "Desserts"
+    ],
+    "avgRating": 4.4,
+    "feeDetails": {
+        "restaurantId": "640927",
+        "fees": [
+            {
+                "name": "BASE_DISTANCE",
+                "fee": 3100
+            },
+            {
+                "name": "BASE_TIME"
+            },
+            {
+                "name": "ANCILLARY_SURGE_FEE"
+            }
+        ],
+        "totalFee": 3100
+    },
+    "parentId": "386478",
+    "avgRatingString": "4.4",
+    "totalRatingsString": "500+",
+    "sla": {
+        "deliveryTime": 23,
+        "lastMileTravel": 1.6,
+        "serviceability": "SERVICEABLE",
+        "slaString": "23 mins",
+        "lastMileTravelString": "1.6 km",
+        "iconType": "ICON_TYPE_EMPTY"
+    },
+    "availability": {
+        "nextCloseTime": "2023-08-02 22:00:00",
+        "opened": true
+    },
+    "badges": {},
+    "isOpen": true,
+    "aggregatedDiscountInfoV2": {},
+    "type": "F",
+    "badgesV2": {
+        "entityBadges": {
+            "imageBased": {},
+            "textBased": {},
+            "textExtendedBadges": {}
+        }
+    },
+    "orderabilityCommunication": {
+        "title": {},
+        "subTitle": {},
+        "message": {},
+        "customIcon": {}
+    },
+    "differentiatedUi": {
+        "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        "differentiatedUiMediaDetails": {
+            "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+            "lottie": {},
+            "video": {}
+        }
+    },
+    "reviewsSummary": {},
+    "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+    "restaurantOfferPresentationInfo": {}
+}

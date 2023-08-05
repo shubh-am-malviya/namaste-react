@@ -16,6 +16,7 @@ const Body = () => {
 	const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
 	// console.log("LIST OF RESTAURANTS", listOfRestaurants);
+	// console.log("FILTER LIST OF RESTAURANTS", filteredRestaurants);
 
 	useEffect(() => {
 		fetchResData();
@@ -29,21 +30,22 @@ const Body = () => {
 
 		setListOfRestaurants(
 			jsonData?.data?.cards.find(
-				(c) => c?.card?.card?.id === "top_brands_for_you"
+				(c) => c?.card?.card?.id === "restaurant_grid_listing"
 			)?.card?.card?.gridElements?.infoWithStyle?.restaurants
 		);
+
 		setFilteredRestaurants(
 			jsonData?.data?.cards.find(
-				(c) => c?.card?.card?.id === "top_brands_for_you"
+				(c) => c?.card?.card?.id === "restaurant_grid_listing"
 			)?.card?.card?.gridElements?.infoWithStyle?.restaurants
 		);
 	};
 
 	const filterTopRatedRestaurants = () => {
 		const filteredRestaurants = listOfRestaurants.filter(
-			(res) => res.data.avgRating > 4
+			(res) => res.info.avgRating > 4
 		);
-		setListOfRestaurants(filteredRestaurants);
+		setFilteredRestaurants(filteredRestaurants);
 	};
 
 	if (!onlineStatus) {
@@ -58,6 +60,7 @@ const Body = () => {
 				<div className="search m-4 p-4">
 					<input
 						type="text"
+						data-testid="search-res"
 						className="border border-solid border-black"
 						onChange={(e) => setSearchtext(e.target.value)}
 						value={searchtext}
